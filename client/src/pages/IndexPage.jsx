@@ -10,8 +10,8 @@ import Pagination from "./Pagination";
 export default function IndexPage() {
   const [results, setResults] = useState([]);
   const [placesPage, setPlacesPage] = useState([]);
-  const [currentPage, setCurrentPage] = useState(1);
-  const [placesPerPage] = useState(15);
+  //const [currentPage, setCurrentPage] = useState(1);
+  //const [placesPerPage] = useState(16);
   
   
   useEffect(() => {
@@ -21,23 +21,22 @@ export default function IndexPage() {
     })
   }, []);
 
-  const indexOfLastPlace = currentPage * placesPerPage;
+  /*<Pagination
+        postsPerPage={placesPerPage}
+        totalPosts={placesPage.length}
+        paginate={paginate}
+        const indexOfLastPlace = currentPage * placesPerPage;
   const indexOfFirstPage = indexOfLastPlace - placesPerPage;
   const currentPages = placesPage.slice(indexOfFirstPage, indexOfLastPlace);
 
   const paginate = pageNumber => setCurrentPage(pageNumber);
+      /> */
+  
 
   return (
   <div className=" text-center ">
-
-      
-          
-    <AllPlacesPage places={currentPages}/>
-    <Pagination
-        postsPerPage={placesPerPage}
-        totalPosts={placesPage.length}
-        paginate={paginate}
-      />
+    
+    <AllPlacesPage places={placesPage}/>
   </div>
   )
 }

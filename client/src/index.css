@@ -23,7 +23,6 @@ button.primary {
 .dropdown {
   border-bottom: none;
   box-sizing: border-box;
-  position: absolute;
-  width: 100%;
+  width: 450px;
   display: over;
 }

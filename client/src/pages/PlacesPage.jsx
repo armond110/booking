@@ -24,16 +24,18 @@ export default function PlacesPage() {
       </div>
       <div className="mt-4 px-8 py-5 ">
         {places.length > 0 && places.map((place, index) => (
-          <Link key={index} to={'/account/places/' +place._id} className="md:flex cursor-pointer gap-4  p-4 rounded-2xl mt-2 md:bg-gray-300">
-            <div className="flex w-72 md:w-80 h-32 md:h-80 lg:w-40 lg:h-32  shrink-0 items-center justify-center mx-auto">
-              <PlaceImg place={place} className=""/>
-            </div>
-            <div className="grow-0 shrink text-center px-12">
-              <h2 className="text-lg mt-8 md:mt-0 mb-4 ">{place.title}</h2>
-              <p className="text-md mt-2 r hidden md:flex">{place.description}</p>
+          <Link key={index} to={'/account/places/' +place._id} className="md:flex cursor-pointer gap-4  p-4 rounded-2xl mt-2 md:bg-gray-50">
+            <div className="flex md:w-80 md:h-80 lg:w-40 lg:h-32 mb-2  shrink-0 items-center justify-center mx-auto">
+              <PlaceImg place={place} className="rounded-xl"/>
+              
             </div>
             
+            <div className="grow-0 shrink text-center md:px-12">
+              <h2 className="text-lg mb-2 md:mb-0  md:mt-0 font-semibold">{place.title}</h2>
+              <p className="text-md mt-2 r hidden md:flex">{place.description}</p>
+            </div>
           </Link>
+          
         ))}
       </div>
     </div>

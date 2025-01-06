@@ -3,6 +3,7 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 import AccountNav from "../AccountNav";
 import PlaceGallery from "../PlaceGallery";
+import {differenceInCalendarDays, format} from 'date-fns'
 
 
 export default function BookingPage() {
@@ -36,14 +37,20 @@ export default function BookingPage() {
         <div className="justify-center mx-auto items-center md:mr-4">
         <PlaceGallery place={booking.place} />
         </div>
-        <div className="bg-gray-200 p-6 my-6 rounded-2xl flex items-center justify-between md:px-16 ">
+        <div className=" p-6 my-6 rounded-2xl  items-center justify-between md:px-16 ">
         <div>
-          <h2 className="text-2xl ">Your booking information:</h2>
+          <h2 className="text-lg md:text-xl text-center">Your booking information:</h2>
           <h1 booking={booking}></h1>
         </div>
-        <div className="bg-primary p-4 text-white rounded-xl">
-          <div className="text-center md:block">Total price</div>
-          <div className="text-3xl">${booking.price}</div>
+        <div className="p-2 rounded-xl">
+          <div className="text-center  md:block md:text-lg">Total price: ${booking.price}</div>
+          <div className="text-center  md:block md:text-lg">Number of nights: {differenceInCalendarDays(new Date(booking.checkOut), new Date(booking.checkIn))}</div>
+          <div className="text-center mt-4 text-sm md:block">
+          From {format(new Date(booking.checkIn), 'dd-MM-yyyy')}      
+          </div>
+          <div className="text-center text-sm  md:block">
+          to {format(new Date(booking.checkOut), 'dd-MM-yyyy')}
+          </div>
         </div>
       </div>
       </div>
