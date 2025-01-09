@@ -26,7 +26,15 @@ app.use(
     credentials: true,
     origin: true,
     methods: ['GET', 'POST', 'PUT', 'DELETE'],
-    allowedHeaders: ['Content-Type'],
+    allowedHeaders: [
+      'Content-Type',
+      'Authorization',
+      'x-auth-token',
+      'token',
+      'X-Requested-With',
+      'Accept',
+      'Origin',
+    ],
   })
 );
 app.options('*', cors());
