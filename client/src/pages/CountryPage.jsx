@@ -38,7 +38,7 @@ export default function CountryPage(){
           
           {place?.photos?.length > 0 && place.photos.map((photo, number) => (
             <div className="items-center mx-auto justify-center size-100" key={number}>
-              <img src={'http://localhost:3000/uploads/'+photo} alt="" />
+              <img src={axios.defaults.baseURL + '/uploads/'+photo} alt="" />
             </div>
           ))}
           
@@ -68,7 +68,7 @@ export default function CountryPage(){
                   <path strokeLinecap="round" strokeLinejoin="round" d="M15.75 19.5 8.25 12l7.5-7.5" />
                 </svg>
                 </Link>
-                    <img onClick={() => setShowAllPhotos(true)} className="md:aspect-square object-cover cursor-pointer  rounded-2xl md:rounded-none  " src={'http://localhost:3000/uploads/'+place.photos[0]} alt=""/>
+                    <img onClick={() => setShowAllPhotos(true)} className="md:aspect-square object-cover cursor-pointer  rounded-2xl md:rounded-none  " src={axios.defaults.baseURL + '/uploads/'+place.photos[0]} alt=""/>
                     
                   </div>
                   
@@ -77,16 +77,16 @@ export default function CountryPage(){
             </div>
             <div className="hidden md:grid md:grid-cols-2">
               {place.photos?.[1] && (
-                <img onClick={() => setShowAllPhotos(true)} className="aspect-square object-cover  right-1 cursor-pointer " src={'http://localhost:3000/uploads/'+place.photos[1]} alt=""/>
+                <img onClick={() => setShowAllPhotos(true)} className="aspect-square object-cover  right-1 cursor-pointer " src={axios.defaults.baseURL + '/uploads/'+place.photos[1]} alt=""/>
               )}
               {place.photos?.[2] && (
-                  <img onClick={() => setShowAllPhotos(true)} className="aspect-square object-cover ml-1  cursor-pointer " src={'http://localhost:3000/uploads/'+place.photos[2]} alt=""/>
+                  <img onClick={() => setShowAllPhotos(true)} className="aspect-square object-cover ml-1  cursor-pointer " src={axios.defaults.baseURL + '/uploads/'+place.photos[2]} alt=""/>
               )}
               {place.photos?.[3] && (
-                <img onClick={() => setShowAllPhotos(true)} className="aspect-square object-cover cursor-pointer right-1 relative ml-1 top-1" src={'http://localhost:3000/uploads/'+place.photos[3]} alt=""/>
+                <img onClick={() => setShowAllPhotos(true)} className="aspect-square object-cover cursor-pointer right-1 relative ml-1 top-1" src={axios.defaults.baseURL + '/uploads/'+place.photos[3]} alt=""/>
               )}
               <div>{place.photos?.[4] && (
-                  <img onClick={() => setShowAllPhotos(true)} className="aspect-square object-cover relative ml-1 top-1 cursor-pointer " src={'http://localhost:3000/uploads/'+place.photos[4]} alt=""/>
+                  <img onClick={() => setShowAllPhotos(true)} className="aspect-square object-cover relative ml-1 top-1 cursor-pointer " src={axios.defaults.baseURL + '/uploads/'+place.photos[4]} alt=""/>
               )}
              
               </div>

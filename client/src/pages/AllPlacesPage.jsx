@@ -7,7 +7,7 @@ export default function AllPlacesPage({places}) {
       {places.length > 0 && places.map((place, index) => (
         <Link key={index} to={'/place/'+place._id}>
             {place.photos?.[0] && (
-                <img className="rounded-2xl object-cover  justify-center items-center mx-auto w-full h-48 " src={'http://localhost:3000/uploads/'+place.photos[0]} alt=""/>
+                <img className="rounded-2xl object-cover  justify-center items-center mx-auto w-full h-48 " src={axios.defaults.baseURL + '/uploads/'+place.photos[0]} alt=""/>
             )}
           <h3 className="font-bold  text-sm">{place.address}</h3>
           <h2 className="  text-gray-500 text-sm">{place.title}</h2>

@@ -22,7 +22,7 @@ export default function PlaceGallery({place}) {
       
       {place?.photos?.length > 0 && place.photos.map((photo, number) => (
         <div className="items-center mx-auto justify-center size-100" key={number}>
-          <img src={'http://localhost:3000/uploads/'+photo} alt="" />
+          <img src={axios.defaults.baseURL + '/uploads/'+photo} alt="" />
         </div>
       ))}
       

@@ -1,7 +1,9 @@
+import axios from "axios";
+
 export default function Image({src,...rest}) {
   src = src && src.includes('https://')
     ? src
-    : 'http://localhost:3000/uploads/'+src;
+    : axios.defaults.baseURL + '/uploads/'+src;
   return (
     <img {...rest} src={src} alt={''} />
   );
