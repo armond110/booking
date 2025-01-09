@@ -24,9 +24,12 @@ app.use('/uploads', express.static(__dirname + '/uploads'));
 app.use(
   cors({
     credentials: true,
-    origin: '*',
+    origin: true,
+    methods: ['GET', 'POST', 'PUT', 'DELETE'],
+    allowedHeaders: ['Content-Type'],
   })
 );
+app.options('*', cors());
 
 mongoose.connect(process.env.MONGO_URL);
 
