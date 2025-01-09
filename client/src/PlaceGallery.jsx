@@ -1,5 +1,6 @@
 import { useState } from "react";
 import Image from "./Image.jsx";
+import axios from "axios";
 
 export default function PlaceGallery({place}) {
   const [showAllPhotos, setShowAllPhotos] = useState(false);
