@@ -51,6 +51,7 @@ app.post('/register', async (req, res) => {
       email,
       password: bcrypt.hashSync(password, bcryptSalt),
     });
+    delete userDoc.password;
     res.json(userDoc);
   } catch (e) {
     res.status(422).json(e);
@@ -68,6 +69,7 @@ app.post('/login', async (req, res) => {
         jwtSecret,
         {},
         (err, token) => {
+          delete userDoc.password;
           if (err) throw err;
           res.cookie('token', token).json(userDoc);
         }
