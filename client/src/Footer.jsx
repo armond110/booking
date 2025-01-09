@@ -11,7 +11,7 @@ export default function Footer() {
           color="blue-gray"
           className=" !text-sm !font-normal text-black"
         >
-          Copyright &copy; {currentYear} PlanTrip
+          &copy; {currentYear} PlanTrip
         </Typography>
       </div>
     </footer>

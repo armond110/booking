@@ -30,22 +30,24 @@ export default function BookingWidget({place}) {
   }
 
   async function bookThisPlace() {
+   
+    if (!checkIn || !checkOut || !numberOfGuests || place.maxGuests < numberOfGuests || numberOfGuests <= 0 ||  !name || !phone) {
+      toast.error('Please fill out all required fields');
+      return;
+    } 
     const response = await axios.post('/bookings', {
       checkIn, checkOut, numberOfGuests, name, phone,
       place: place._id,
-      price: numberOfNights * place.price,
+      price: numberOfGuests * numberOfNights * place.price
     });
-    if (!checkIn || !checkOut || !numberOfGuests ||  !name || !phone) {
-      toast.error('Please fill out all required fields');
-      return;
-    }
     const bookingId = response.data._id;
     setRedirect(`/account/bookings/${bookingId}`);
+    
   }
   
 
   return(
-    <div className="bg-white shadow p-4 rounded-2xl">
+    <div className="bg-white shadow p-4 rounded-2xl ">
       
               <div className="text-md md:text-2xl text-center">
                 Price: ${place.price} / per night
@@ -69,17 +71,18 @@ export default function BookingWidget({place}) {
                 />
               </div>
               
-              {numberOfGuests > 0  && (
+              
               <div className="py-3 px-4 border-t">
                 <label className="text-sm md:text-lg">Number of guests:</label>
                 <input type="number" className="text-sm md:text-lg"
                 value={numberOfGuests}
                 max={place.maxGuests}
+                min={1}
                 onChange={ev => setNumberOfGuests(ev.target.value)}
                 
                 />
               </div>
-              )}
+             
               {numberOfNights > 0 && (
                 <div className="py-3 px-4 border-t">
                 <label>Your full name:</label>

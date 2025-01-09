@@ -12,7 +12,7 @@ export default function PlacesPage() {
     });
   }, [],)
   return (
-    <div>
+    <div className="mt-8 md:mt-0">
       <AccountNav />
         <div className="text-center">
         <Link className="inline-flex gap-1 bg-primary text-white py-2 px-6 rounded-full" to={'/account/places/new'}>
@@ -25,15 +25,15 @@ export default function PlacesPage() {
       <div className="mt-4 px-8 py-5 ">
         {places.length > 0 && places.map((place, index) => (
           <Link key={index} to={'/account/places/' +place._id} className="md:flex cursor-pointer gap-4  p-4 rounded-2xl mt-2 md:bg-gray-50">
-            <div className="flex md:w-80 md:h-80 lg:w-40 lg:h-32 mb-2  shrink-0 items-center justify-center mx-auto">
+            <div className="md:flex">
               <PlaceImg place={place} className="rounded-xl"/>
-              
-            </div>
-            
-            <div className="grow-0 shrink text-center md:px-12">
+              <div className="grow-0 shrink text-center md:px-12">
               <h2 className="text-lg mb-2 md:mb-0  md:mt-0 font-semibold">{place.title}</h2>
               <p className="text-md mt-2 r hidden md:flex">{place.description}</p>
             </div>
+            </div>
+            
+            
           </Link>
           
         ))}

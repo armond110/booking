@@ -32,7 +32,7 @@ export default function ProfilePage() {
   }
 
   return (
-    <div>
+    <div className="mt-8 md:mt-0">
       <AccountNav />
       {subpage === 'profile' && (
         <div className="text-center max-w-lg mx-auto">

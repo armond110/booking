@@ -28,7 +28,7 @@ export default function CountryPage(){
               <h2 className="text-3xl text-center">Photos of {place.title}</h2>
             </div>
             <div>
-              <button onClick={() => setShowAllPhotos(false)} className="fixed right-2 bottom-8 flex gap-1 py-2 px-4 rounded-2xl  shadow shadow-black bg-white text-black">
+              <button onClick={() => setShowAllPhotos(false)} className="fixed right-8 bottom-8 flex gap-1 py-2 px-4 rounded-2xl  shadow shadow-black bg-white text-black">
                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="size-6">
                   <path strokeLinecap="round" strokeLinejoin="round" d="M6 18 18 6M6 6l12 12" />
                 </svg>
@@ -49,7 +49,7 @@ export default function CountryPage(){
     
   return (
     <>
-    <div className="mt-8 bg-gray-50 -my-8 px-8   text-center">
+    <div className="mt-4 md:mt-8 bg-gray-50 -my-8 px-8   text-center">
           <h1 className="text-3xl">{place.title}</h1>
             <a className="gap-1 my-3 block flex font-semibold underline px-4 md:px-40" target="_blank" href={'https://maps.google.com/?q='+place.address}>
               <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="size-6">
@@ -58,18 +58,18 @@ export default function CountryPage(){
             </svg>
             {place.address}
             </a>
-            <div className="relative md:px-15 lg:px-24 ">
+            <div className=" md:px-15 lg:px-40 ">
             <div className="md:grid md:gap-2 md:grid-cols-[2fr_2fr] md:rounded-3xl md:overflow-hidden ">
               <div className="">
                 {place.photos?.[0] && (
                   <div className="">
-                    <img onClick={() => setShowAllPhotos(true)} className="aspect-square object-cover cursor-pointer  rounded-2xl md:rounded-none  px-2 py-4 md:px-0 md:py-0" src={'http://localhost:3000/uploads/'+place.photos[0]} alt=""/>
-                    <button onClick={() => setShowAllPhotos(true)} className="flex gap-1 absolute bottom-6 md:bottom-2 right-8 lg:right-28  py-2 px-4  bg-white rounded-2xl shadow shadow-md shadow-gray-500">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className="w-6 h-6">
-              <path fillRule="evenodd" d="M1.5 6a2.25 2.25 0 012.25-2.25h16.5A2.25 2.25 0 0122.5 6v12a2.25 2.25 0 01-2.25 2.25H3.75A2.25 2.25 0 011.5 18V6zM3 16.06V18c0 .414.336.75.75.75h16.5A.75.75 0 0021 18v-1.94l-2.69-2.689a1.5 1.5 0 00-2.12 0l-.88.879.97.97a.75.75 0 11-1.06 1.06l-5.16-5.159a1.5 1.5 0 00-2.12 0L3 16.061zm10.125-7.81a1.125 1.125 0 112.25 0 1.125 1.125 0 01-2.25 0z" clipRule="evenodd" />
-            </svg>
-            Show more photos
-          </button>
+                <Link to={'/'} className="absolute md:hidden rounded-full bg-white px-1 py-1  top-36 left-10">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="size-5">
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M15.75 19.5 8.25 12l7.5-7.5" />
+                </svg>
+                </Link>
+                    <img onClick={() => setShowAllPhotos(true)} className="md:aspect-square object-cover cursor-pointer  rounded-2xl md:rounded-none  " src={'http://localhost:3000/uploads/'+place.photos[0]} alt=""/>
+                    
                   </div>
                   
                 )}
@@ -77,23 +77,18 @@ export default function CountryPage(){
             </div>
             <div className="hidden md:grid md:grid-cols-2">
               {place.photos?.[1] && (
-                <img onClick={() => setShowAllPhotos(true)} className="aspect-square object-cover relative right-1 cursor-pointer " src={'http://localhost:3000/uploads/'+place.photos[1]} alt=""/>
+                <img onClick={() => setShowAllPhotos(true)} className="aspect-square object-cover  right-1 cursor-pointer " src={'http://localhost:3000/uploads/'+place.photos[1]} alt=""/>
               )}
               {place.photos?.[2] && (
-                  <img onClick={() => setShowAllPhotos(true)} className="aspect-square object-cover relative  cursor-pointer " src={'http://localhost:3000/uploads/'+place.photos[2]} alt=""/>
+                  <img onClick={() => setShowAllPhotos(true)} className="aspect-square object-cover ml-1  cursor-pointer " src={'http://localhost:3000/uploads/'+place.photos[2]} alt=""/>
               )}
               {place.photos?.[3] && (
-                <img onClick={() => setShowAllPhotos(true)} className="aspect-square object-cover cursor-pointer right-1 relative top-1" src={'http://localhost:3000/uploads/'+place.photos[3]} alt=""/>
+                <img onClick={() => setShowAllPhotos(true)} className="aspect-square object-cover cursor-pointer right-1 relative ml-1 top-1" src={'http://localhost:3000/uploads/'+place.photos[3]} alt=""/>
               )}
               <div>{place.photos?.[4] && (
-                  <img onClick={() => setShowAllPhotos(true)} className="aspect-square object-cover relative top-1 cursor-pointer " src={'http://localhost:3000/uploads/'+place.photos[4]} alt=""/>
+                  <img onClick={() => setShowAllPhotos(true)} className="aspect-square object-cover relative ml-1 top-1 cursor-pointer " src={'http://localhost:3000/uploads/'+place.photos[4]} alt=""/>
               )}
-              <button onClick={() => setShowAllPhotos(true)} className="flex gap-1 absolute bottom-2 right-2 lg:right-28  py-2 px-4  bg-white rounded-2xl shadow shadow-md shadow-gray-500">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className="w-6 h-6">
-              <path fillRule="evenodd" d="M1.5 6a2.25 2.25 0 012.25-2.25h16.5A2.25 2.25 0 0122.5 6v12a2.25 2.25 0 01-2.25 2.25H3.75A2.25 2.25 0 011.5 18V6zM3 16.06V18c0 .414.336.75.75.75h16.5A.75.75 0 0021 18v-1.94l-2.69-2.689a1.5 1.5 0 00-2.12 0l-.88.879.97.97a.75.75 0 11-1.06 1.06l-5.16-5.159a1.5 1.5 0 00-2.12 0L3 16.061zm10.125-7.81a1.125 1.125 0 112.25 0 1.125 1.125 0 01-2.25 0z" clipRule="evenodd" />
-            </svg>
-            Show more photos
-          </button>
+             
               </div>
               
             </div>

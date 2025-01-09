@@ -13,14 +13,14 @@ export default function BookingsPage() {
     })
   }, []);
   return (
-    <div className="px-2 md:px-4  lg:px-32">
+    <div className="px-2 md:px-4  lg:px-32 mt-8 md:mt-0">
       <AccountNav />
       <div className="px-4">
         
         {bookings?.length > 0 && bookings.map(booking => ( 
           <Link to={`/account/bookings/${booking._id}`} className="md:flex  gap-4 bg-gray-50 rounded-2xl overflow-hidden mt-2">
-            <div className="size-34 md:w-48">
-              <PlaceImg place={booking.place} className='rounded-xl'/>
+            <div className="size-34 md:w-64 h-42 md:h-52 ">
+              <PlaceImg place={booking.place} className=''/>
             </div>
             <div className="py-3 pr-3 grow   md:mt-0"> 
               <h2 className="text-xl">{booking.title}</h2>

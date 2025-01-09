@@ -7,11 +7,11 @@ const Pagination = ({ postsPerPage, totalPosts, paginate }) => {
   }
 
   return (
-    <nav aria-label="Page navigation example">
-      <ul className="inline-flex -space-x-px text-base h-10">
+    <nav>
+      <ul className="inline-flex -space-x-px text-base h-10 mb-8">
         {pageNumbers.map(number => (
           <li key={number}>
-            <a onClick={() => paginate(number)} href='#' className="flex items-center justify-center px-4 h-10 leading-tight text-gray-500 bg-white border border-gray-300 hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-200 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-300 dark:hover:text-white">
+            <a onClick={() => paginate(number)} href='#' className="flex items-center justify-center px-4 h-10 leading-tight text-white bg-gray-800 border border-gray-300 hover:bg-black hover:text-white  ml-1">
               {number}
             </a>
           </li>

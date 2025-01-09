@@ -26,3 +26,11 @@ button.primary {
   width: 450px;
   display: over;
 }
+@media only screen and (max-width: 600px) {
+  .dropdown {
+    border-bottom: none;
+    box-sizing: border-box;
+    width: 100%;
+    display: over;
+  }
+}
