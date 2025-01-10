@@ -4,6 +4,9 @@ import AccountNav from "../AccountNav";
 import axios from "axios";
 import PlaceImg from "../PlaceImg";
 import { Link } from "react-router";
+import express from 'express'
+
+const app = express();
 
 app.options('*', cors());
 

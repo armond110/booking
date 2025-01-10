@@ -4,6 +4,9 @@ import {Link, Navigate, useParams} from 'react-router'
 import axios from "axios";
 import PlacesPage from "./PlacesPage";
 import AccountNav from "../AccountNav";
+import express from 'express'
+
+const app = express();
 
 app.options('*', cors());
 
