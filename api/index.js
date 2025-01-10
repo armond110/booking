@@ -28,7 +28,7 @@ app.use(
   })
 );
 app.options('*', cors());
-app.options('*', (req, res) => {
+/*app.options('*', (req, res) => {
   res.header(
     'Access-Control-Allow-Origin',
     'https://booking-green-nine.vercel.app'
@@ -36,7 +36,7 @@ app.options('*', (req, res) => {
   res.header('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, OPTIONS');
   res.header('Access-Control-Allow-Headers', 'Content-Type, Authorization');
   res.send();
-});
+});*/
 
 mongoose.connect(process.env.MONGO_URL);
 
