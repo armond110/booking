@@ -214,33 +214,39 @@ app.get('/places', async (req, res) => {
 });
 
 app.post('/bookings', async (req, res) => {
-  const userData = await getUserDataFromReq(req);
+  const { token } = req.cookies;
   const { place, checkIn, checkOut, numberOfGuests, name, phone, price } =
     req.body;
-  Booking.create({
-    place,
-    checkIn,
-    checkOut,
-    numberOfGuests,
-    name,
-    phone,
-    price,
-    user: userData.id,
-  })
-    .then((doc) => {
-      res.json(doc);
+  jwt.verify(token, jwtSecret, {}, async () => {
+    const userData = await getUserDataFromReq(req);
+    Booking.create({
+      place,
+      checkIn,
+      checkOut,
+      numberOfGuests,
+      name,
+      phone,
+      price,
+      user: userData.id,
     })
-    .catch((err) => {
-      throw err;
-    });
+      .then((doc) => {
+        res.json(doc);
+      })
+      .catch((err) => {
+        throw err;
+      });
+  });
 });
 app.get('/bookings', async (req, res) => {
+  const { token } = req.cookies;
   const userData = await getUserDataFromReq(req);
-  res.json(
-    await Booking.find({
-      user: userData.id,
-    }).populate('place')
-  );
+  jwt.verify(token, jwtSecret, {}, async () => {
+    res.json(
+      await Booking.find({
+        user: userData.id,
+      }).populate('place')
+    );
+  });
 });
 // app.listen(3000);
 module.exports = app;
