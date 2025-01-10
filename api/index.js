@@ -243,4 +243,4 @@ app.post('/logout', (req, res) => {
 });
 
 // app.listen(3000);
-module.exports = app;
+module.exports = { app, jwt };
