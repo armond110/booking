@@ -29,10 +29,7 @@ app.use(
 );
 app.options('*', cors());
 
-mongoose.connect(process.env.MONGO_URL, {
-  useNewUrlParser: true,
-  useUnifiedTopology: true,
-});
+mongoose.connect(process.env.MONGO_URL);
 
 function getUserDataFromReq(req) {
   return new Promise((resolve, reject) => {
@@ -217,12 +214,6 @@ app.get('/places', async (req, res) => {
 });
 
 app.post('/bookings', async (req, res) => {
-  app.use(
-    cors({
-      origin: true,
-    })
-  );
-  app.options('*', cors());
   const userData = await getUserDataFromReq(req);
   const { place, checkIn, checkOut, numberOfGuests, name, phone, price } =
     req.body;
@@ -244,12 +235,6 @@ app.post('/bookings', async (req, res) => {
     });
 });
 app.get('/bookings', async (req, res) => {
-  app.use(
-    cors({
-      origin: true,
-    })
-  );
-  app.options('*', cors());
   const userData = await getUserDataFromReq(req);
   res.json(
     await Booking.find({
