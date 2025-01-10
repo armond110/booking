@@ -28,7 +28,6 @@ app.use(
     origin: true,
   })
 );
-app.options('*', cors());
 
 mongoose.connect(process.env.MONGO_URL);
 
