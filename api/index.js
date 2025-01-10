@@ -36,6 +36,13 @@ function getUserDataFromReq(req) {
 app.get('/test', (req, res) => {
   res.json('test ok');
 });
+app.use(
+  cors({
+    credentials: true,
+    origin: true,
+  })
+);
+app.options('*', cors());
 app.post('/register', async (req, res) => {
   const { name, email, password } = req.body;
   try {
