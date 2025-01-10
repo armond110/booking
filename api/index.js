@@ -22,6 +22,14 @@ app.use(express.json());
 app.use(cookieParser());
 app.use('/uploads', express.static(__dirname + '/uploads'));
 
+app.use(
+  cors({
+    credentials: true,
+    origin: true,
+  })
+);
+app.options('*', cors());
+
 mongoose.connect(process.env.MONGO_URL);
 
 function getUserDataFromReq(req) {
@@ -36,13 +44,6 @@ function getUserDataFromReq(req) {
 app.get('/test', (req, res) => {
   res.json('test ok');
 });
-app.use(
-  cors({
-    credentials: true,
-    origin: true,
-  })
-);
-app.options('*', cors());
 app.post('/register', async (req, res) => {
   const { name, email, password } = req.body;
   try {
