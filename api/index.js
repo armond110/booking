@@ -18,19 +18,19 @@ const app = express();
 const bcryptSalt = bcrypt.genSaltSync(10);
 const jwtSecret = process.env.JWT_SECRET;
 
-app.use(express.json());
-app.use(cookieParser());
-app.use('/uploads', express.static(__dirname + '/uploads'));
-
 app.use(
   cors({
     credentials: true,
-    origin: true,
+    origin: 'https://booking-green-nine.vercel.app',
   })
 );
+app.options('*', cors());
 
 mongoose.connect(process.env.MONGO_URL);
 
+app.use(express.json());
+app.use(cookieParser());
+app.use('/uploads', express.static(__dirname + '/uploads'));
 function getUserDataFromReq(req) {
   return new Promise((resolve, reject) => {
     jwt.verify(req.cookies.token, jwtSecret, {}, async (err, userData) => {
@@ -242,5 +242,5 @@ app.get('/bookings', async (req, res) => {
     }).populate('place')
   );
 });
-app.listen(3000);
-// module.exports = app;
+// app.listen(3000);
+module.exports = app;
