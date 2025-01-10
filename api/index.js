@@ -24,10 +24,15 @@ app.use('/uploads', express.static(__dirname + '/uploads'));
 app.use(
   cors({
     credentials: true,
-    origin: 'https://booking-green-nine.vercel.app',
+    origin: true,
   })
 );
-app.options('*', cors());
+app.options('*', (req, res) => {
+  res.header('Access-Control-Allow-Origin', '*');
+  res.header('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, OPTIONS');
+  res.header('Access-Control-Allow-Headers', 'Content-Type, Authorization');
+  res.send();
+});
 
 mongoose.connect(process.env.MONGO_URL);
 
