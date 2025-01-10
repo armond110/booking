@@ -27,7 +27,8 @@ app.use(
     origin: true,
   })
 );
-app.options('*', cors(), (req, res) => {
+app.options('*', cors());
+app.options('*', (req, res) => {
   res.header(
     'Access-Control-Allow-Origin',
     'https://booking-green-nine.vercel.app'
