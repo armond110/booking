@@ -21,13 +21,6 @@ const jwtSecret = process.env.JWT_SECRET;
 app.use(express.json());
 app.use(cookieParser());
 app.use('/uploads', express.static(__dirname + '/uploads'));
-app.use(
-  cors({
-    credentials: true,
-    origin: true,
-  })
-);
-app.options('*', cors());
 
 mongoose.connect(process.env.MONGO_URL);
 
