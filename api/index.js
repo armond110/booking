@@ -82,6 +82,7 @@ app.post('/login', async (req, res) => {
   }
 });
 app.get('/profile', (req, res) => {
+  app.options('*', cors());
   const { token } = req.cookies;
   if (token) {
     jwt.verify(token, jwtSecret, {}, async (err, userData) => {
@@ -99,6 +100,7 @@ app.post('/logout', (req, res) => {
   res.cookie('token', '').json(true);
 });
 app.post('/upload-by-link', async (req, res) => {
+  app.options('*', cors());
   const { link } = req.body;
 
   const newName = 'photo' + Date.now() + '.jpg';
@@ -112,6 +114,7 @@ app.post('/upload-by-link', async (req, res) => {
 
 const photosMiddleware = multer({ dest: 'uploads/' });
 app.post('/upload', photosMiddleware.array('photos', 100), (req, res) => {
+  app.options('*', cors());
   const uploadedFiles = [];
   for (let i = 0; i < req.files.length; i++) {
     const { path, originalname } = req.files[i];
@@ -124,6 +127,7 @@ app.post('/upload', photosMiddleware.array('photos', 100), (req, res) => {
   res.json(uploadedFiles);
 });
 app.post('/places', (req, res) => {
+  app.options('*', cors());
   const { token } = req.cookies;
   const {
     title,
@@ -156,6 +160,7 @@ app.post('/places', (req, res) => {
   });
 });
 app.get('/user-places', (req, res) => {
+  app.options('*', cors());
   const { token } = req.cookies;
   jwt.verify(token, jwtSecret, {}, async (err, userData) => {
     const { id } = userData;
@@ -163,16 +168,19 @@ app.get('/user-places', (req, res) => {
   });
 });
 app.get('/places/:id', async (req, res) => {
+  app.options('*', cors());
   const { id } = req.params;
 
   res.json(await Place.findById(id));
 });
 app.get('/places/:address', async (req, res) => {
+  app.options('*', cors());
   const { address } = req.params;
 
   res.json(await Place.find({ address: address }));
 });
 app.put('/places', async (req, res) => {
+  app.options('*', cors());
   const { token } = req.cookies;
   const {
     id,
@@ -210,10 +218,12 @@ app.put('/places', async (req, res) => {
   });
 });
 app.get('/places', async (req, res) => {
+  app.options('*', cors());
   res.json(await Place.find());
 });
 
 app.post('/bookings', async (req, res) => {
+  app.options('*', cors());
   const userData = await getUserDataFromReq(req);
   const { place, checkIn, checkOut, numberOfGuests, name, phone, price } =
     req.body;
@@ -235,6 +245,7 @@ app.post('/bookings', async (req, res) => {
     });
 });
 app.get('/bookings', async (req, res) => {
+  app.options('*', cors());
   const userData = await getUserDataFromReq(req);
   res.json(
     await Booking.find({
