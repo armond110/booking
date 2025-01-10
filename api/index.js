@@ -10,7 +10,6 @@ const cookieParser = require('cookie-parser');
 const download = require('image-downloader');
 const multer = require('multer');
 const fs = require('fs');
-const stripe = require('stripe');
 
 require('dotenv').config();
 const app = express();
@@ -244,4 +243,3 @@ app.get('/bookings', async (req, res) => {
 });
 // app.listen(3000);
 module.exports = app;
-module.exports = { jwt };
