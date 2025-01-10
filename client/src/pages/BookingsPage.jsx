@@ -5,6 +5,8 @@ import axios from "axios";
 import PlaceImg from "../PlaceImg";
 import { Link } from "react-router";
 
+app.options('*', cors());
+
 export default function BookingsPage() {
   const [bookings, setBookings] = useState([]);
   useEffect(() => {

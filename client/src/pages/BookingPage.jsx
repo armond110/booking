@@ -5,6 +5,8 @@ import AccountNav from "../AccountNav";
 import PlaceGallery from "../PlaceGallery";
 import {differenceInCalendarDays, format} from 'date-fns'
 
+app.options('*', cors());
+
 
 export default function BookingPage() {
   const [booking, setBooking] = useState(null);
