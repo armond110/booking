@@ -219,7 +219,6 @@ app.get('/places', async (req, res) => {
 app.post('/bookings', async (req, res) => {
   app.use(
     cors({
-      credentials: true,
       origin: true,
     })
   );
@@ -247,7 +246,6 @@ app.post('/bookings', async (req, res) => {
 app.get('/bookings', async (req, res) => {
   app.use(
     cors({
-      credentials: true,
       origin: true,
     })
   );
