@@ -29,8 +29,8 @@ app.use(
     allowedHeaders: [
       'Content-Type',
       'Authorization',
-      'x-auth-token',
-      'token',
+      'X-Auth-Token',
+      'Token',
       'X-Requested-With',
       'Accept',
       'Origin',
