@@ -217,6 +217,13 @@ app.get('/places', async (req, res) => {
 });
 
 app.post('/bookings', async (req, res) => {
+  app.use(
+    cors({
+      credentials: true,
+      origin: true,
+    })
+  );
+  app.options('*', cors());
   const userData = await getUserDataFromReq(req);
   const { place, checkIn, checkOut, numberOfGuests, name, phone, price } =
     req.body;
@@ -238,6 +245,13 @@ app.post('/bookings', async (req, res) => {
     });
 });
 app.get('/bookings', async (req, res) => {
+  app.use(
+    cors({
+      credentials: true,
+      origin: true,
+    })
+  );
+  app.options('*', cors());
   const userData = await getUserDataFromReq(req);
   res.json(
     await Booking.find({
