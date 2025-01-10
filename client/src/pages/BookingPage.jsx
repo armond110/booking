@@ -4,11 +4,8 @@ import axios from "axios";
 import AccountNav from "../AccountNav";
 import PlaceGallery from "../PlaceGallery";
 import {differenceInCalendarDays, format} from 'date-fns'
-import express from 'express'
 
-const app = express();
 
-app.options('*', cors());
 
 
 export default function BookingPage() {
