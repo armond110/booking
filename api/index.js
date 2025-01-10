@@ -16,7 +16,7 @@ require('dotenv').config();
 const app = express();
 
 const bcryptSalt = bcrypt.genSaltSync(10);
-const jwtSecret = process.env.JWT_SECRET;
+export const jwtSecret = process.env.JWT_SECRET;
 
 app.use(
   cors({
@@ -27,9 +27,9 @@ app.use(
 app.options('*', cors());
 
 mongoose.connect(process.env.MONGO_URL);
-
 app.use(express.json());
 app.use(cookieParser());
+
 app.use('/uploads', express.static(__dirname + '/uploads'));
 function getUserDataFromReq(req) {
   return new Promise((resolve, reject) => {
@@ -214,39 +214,34 @@ app.get('/places', async (req, res) => {
 });
 
 app.post('/bookings', async (req, res) => {
-  const { token } = req.cookies;
+  const userData = await getUserDataFromReq(req);
   const { place, checkIn, checkOut, numberOfGuests, name, phone, price } =
     req.body;
-  jwt.verify(token, jwtSecret, {}, async () => {
-    const userData = await getUserDataFromReq(req);
-    Booking.create({
-      place,
-      checkIn,
-      checkOut,
-      numberOfGuests,
-      name,
-      phone,
-      price,
-      user: userData.id,
+  Booking.create({
+    place,
+    checkIn,
+    checkOut,
+    numberOfGuests,
+    name,
+    phone,
+    price,
+    user: userData.id,
+  })
+    .then((doc) => {
+      res.json(doc);
     })
-      .then((doc) => {
-        res.json(doc);
-      })
-      .catch((err) => {
-        throw err;
-      });
-  });
+    .catch((err) => {
+      throw err;
+    });
 });
 app.get('/bookings', async (req, res) => {
-  const { token } = req.cookies;
   const userData = await getUserDataFromReq(req);
-  jwt.verify(token, jwtSecret, {}, async () => {
-    res.json(
-      await Booking.find({
-        user: userData.id,
-      }).populate('place')
-    );
-  });
+  res.json(
+    await Booking.find({
+      user: userData.id,
+    }).populate('place')
+  );
 });
 // app.listen(3000);
 module.exports = app;
+module.exports = { jwt };
