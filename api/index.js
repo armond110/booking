@@ -15,7 +15,7 @@ require('dotenv').config();
 const app = express();
 
 const bcryptSalt = bcrypt.genSaltSync(10);
-export const jwtSecret = process.env.JWT_SECRET;
+const jwtSecret = process.env.JWT_SECRET;
 
 app.use(
   cors({
@@ -92,10 +92,6 @@ app.get('/profile', (req, res) => {
   } else {
     res.json(null);
   }
-});
-
-app.post('/logout', (req, res) => {
-  res.cookie('token', '').json(true);
 });
 app.post('/upload-by-link', async (req, res) => {
   const { link } = req.body;
@@ -241,6 +237,10 @@ app.get('/bookings', async (req, res) => {
     }).populate('place')
   );
 });
+
+app.post('/logout', (req, res) => {
+  res.cookie('token', '').json(true);
+});
+
 // app.listen(3000);
-module.exports = jwt;
 module.exports = app;
