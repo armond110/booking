@@ -5,6 +5,8 @@ import axios from "axios";
 import PlacesPage from "./PlacesPage";
 import AccountNav from "../AccountNav";
 
+app.options('*', cors());
+
 
 export default function ProfilePage() {
   const [redirect, setRedirect] = useState(null);
