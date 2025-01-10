@@ -25,7 +25,7 @@ app.use('/uploads', express.static(__dirname + '/uploads'));
 app.use(
   cors({
     credentials: true,
-    origin: true,
+    origin: 'https://booking-green-nine.vercel.app',
   })
 );
 app.options('*', cors());
@@ -243,5 +243,5 @@ app.get('/bookings', async (req, res) => {
     }).populate('place')
   );
 });
-
-module.exports = app;
+app.listen(3000);
+// module.exports = app;
