@@ -14,7 +14,7 @@ import BookingsPage from './pages/BookingsPage'
 import BookingPage from './pages/BookingPage'
 import CountryPage from './pages/CountryPage'
 
-axios.defaults.baseURL = 'https://travellingbackend.vercel.app';
+axios.defaults.baseURL = 'https://booking-29xs.onrender.com';
 axios.defaults.withCredentials = true;
 
 function App() {
