@@ -153,15 +153,6 @@ app.post('/places', (req, res) => {
     });
   }
 });
-app.get('/user-places', (req, res) => {
-  const { token } = req.cookies;
-  if (token) {
-    jwt.verify(token, jwtSecret, {}, async (err, userData) => {
-      const { id } = userData;
-      res.json(await Place.find({ owner: id }));
-    });
-  }
-});
 app.get('/places/:id', async (req, res) => {
   const { id } = req.params;
 
@@ -213,6 +204,20 @@ app.put('/places', async (req, res) => {
 app.get('/places', async (req, res) => {
   res.json(await Place.find());
 });
+app.get('/bookings', async (req, res) => {
+  const { token } = req.cookies;
+
+  if (token) {
+    jwt.verify(token, jwtSecret, {}, async () => {
+      const userData = await getUserDataFromReq(req);
+      res.json(
+        await Booking.find({
+          user: userData.id,
+        }).populate('place')
+      );
+    });
+  }
+});
 
 app.post('/bookings', async (req, res) => {
   const { token } = req.cookies;
@@ -242,17 +247,12 @@ app.post('/bookings', async (req, res) => {
     });
   }
 });
-app.get('/bookings', async (req, res) => {
+app.get('/user-places', (req, res) => {
   const { token } = req.cookies;
-
   if (token) {
-    jwt.verify(token, jwtSecret, {}, async () => {
-      const userData = await getUserDataFromReq(req);
-      res.json(
-        await Booking.find({
-          user: userData.id,
-        }).populate('place')
-      );
+    jwt.verify(token, jwtSecret, {}, async (err, userData) => {
+      const { id } = userData;
+      res.json(await Place.find({ owner: id }));
     });
   }
 });
