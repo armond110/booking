@@ -25,7 +25,7 @@ app.use(
 );
 app.options('*', cors());
 
-await mongoose.connect(process.env.MONGO_URL);
+mongoose.connect(process.env.MONGO_URL);
 app.use(express.json());
 app.use(cookieParser());
 
