@@ -36,7 +36,7 @@ export default function IndexPage() {
 }
   return (
   <div className=" text-center ">
-    <div className="fixed md:sticky  w-full   h-18 md:h-0   bg-white mb-12 ">
+    <div className="fixed md:sticky w-full h-18 md:h-0 mb-12 ">
         <SearchBar setResults={setResults} />  
         <div className="px-8">
         {results && results.length > 0 && <SearchResultsList results={results} />}  
