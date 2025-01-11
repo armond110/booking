@@ -25,7 +25,6 @@ app.use(
 );
 app.options('*', cors());
 
-mongoose.connect(process.env.MONGO_URL);
 app.use(express.json());
 app.use(cookieParser());
 
@@ -260,5 +259,4 @@ app.post('/logout', (req, res) => {
   res.cookie('token', '').json(true);
 });
 
-// app.listen(3000);
 module.exports = app;
