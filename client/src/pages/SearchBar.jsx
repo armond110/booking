@@ -36,7 +36,7 @@ export default function SearchBar({ setResults }) {
                 <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z"/>
             </svg>
         </div>
-        <input value={input} onChange={(e) => handleChange(e.target.value)} type="search" id="default-search" className="block w-full shadow-xl md:shadow-none p-4 py-3 ps-10 text-sm text-gray-900 border border-gray-200 rounded-tr-lg rounded-tl-lg bg-gray-50 " placeholder="Search a place..." required />
+        <input value={input} onChange={(e) => handleChange(e.target.value)} type="search" id="default-search" className="block w-full shadow-xl md:shadow-none p-4 py-3 ps-10 text-sm text-gray-900 border border-gray-200 rounded-lg " placeholder="Search a place..." required />
         
       </div>
     </form>
