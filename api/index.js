@@ -13,6 +13,7 @@ const fs = require('fs');
 
 require('dotenv').config();
 const app = express();
+const port = 3000;
 
 const bcryptSalt = bcrypt.genSaltSync(10);
 const jwtSecret = process.env.JWT_SECRET;
@@ -261,6 +262,8 @@ app.post('/logout', (req, res) => {
   res.cookie('token', '').json(true);
 });
 
-app.listen(3000);
+app.listen(port, () => {
+  console.log(`Example app listening on port ${port}`);
+});
 
 // module.exports = app;
