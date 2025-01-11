@@ -1,12 +1,28 @@
 const path = require('path');
 
 module.exports = {
-  mode: 'production',
   entry: './index.js',
   output: {
-    path: path.join(__dirname, 'dist'),
-    publicPath: '/',
-    filename: 'final.js',
+    filename: 'bundle.js',
+    path: path.resolve(__dirname, 'dist'),
   },
-  target: 'node',
+  target: 'node', // Ensure Webpack targets Node.js environment
+  mode: 'development', // Set mode to 'development', 'production', or 'none'
+  externals: {
+    'mongodb-client-encryption': 'commonjs mongodb-client-encryption', // Ignore native module
+  },
+  module: {
+    rules: [
+      {
+        test: /\.js$/,
+        exclude: /node_modules/,
+        use: {
+          loader: 'babel-loader',
+          options: {
+            presets: ['@babel/preset-env'],
+          },
+        },
+      },
+    ],
+  },
 };
