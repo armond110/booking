@@ -25,7 +25,7 @@ app.use(
 );
 app.options('*', cors());
 
-mongoose.connect(process.env.MONGO_URL);
+await mongoose.connect(process.env.MONGO_URL);
 app.use(express.json());
 app.use(cookieParser());
 
@@ -214,33 +214,45 @@ app.get('/places', async (req, res) => {
 });
 
 app.post('/bookings', async (req, res) => {
-  const userData = await getUserDataFromReq(req);
+  const { token } = req.cookies;
   const { place, checkIn, checkOut, numberOfGuests, name, phone, price } =
     req.body;
-  Booking.create({
-    place,
-    checkIn,
-    checkOut,
-    numberOfGuests,
-    name,
-    phone,
-    price,
-    user: userData.id,
-  })
-    .then((doc) => {
-      res.json(doc);
-    })
-    .catch((err) => {
-      throw err;
+
+  if (token) {
+    jwt.verify(token, jwtSecret, {}, async () => {
+      const userData = await getUserDataFromReq(req);
+      Booking.create({
+        place,
+        checkIn,
+        checkOut,
+        numberOfGuests,
+        name,
+        phone,
+        price,
+        user: userData.id,
+      })
+        .then((doc) => {
+          res.json(doc);
+        })
+        .catch((err) => {
+          throw err;
+        });
     });
+  }
 });
 app.get('/bookings', async (req, res) => {
-  const userData = await getUserDataFromReq(req);
-  res.json(
-    await Booking.find({
-      user: userData.id,
-    }).populate('place')
-  );
+  const { token } = req.cookies;
+
+  if (token) {
+    jwt.verify(token, jwtSecret, {}, async () => {
+      const userData = await getUserDataFromReq(req);
+      res.json(
+        await Booking.find({
+          user: userData.id,
+        }).populate('place')
+      );
+    });
+  }
 });
 
 app.post('/logout', (req, res) => {
