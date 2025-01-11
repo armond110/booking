@@ -220,7 +220,7 @@ app.post('/bookings', async (req, res) => {
     req.body;
 
   if (token) {
-    jwt.verify(token, jwtSecret, {}, async (err, userData) => {
+    jwt.verify(token, jwtSecret, {}, async () => {
       const userData = await getUserDataFromReq(req);
       Booking.create({
         place,
@@ -245,7 +245,7 @@ app.get('/bookings', async (req, res) => {
   const { token } = req.cookies;
 
   if (token) {
-    jwt.verify(token, jwtSecret, {}, async (err, userData) => {
+    jwt.verify(token, jwtSecret, {}, async () => {
       const userData = await getUserDataFromReq(req);
       res.json(
         await Booking.find({
