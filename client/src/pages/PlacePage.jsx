@@ -64,7 +64,7 @@ export default function PlacePage() {
           <div className="">
             {place.photos?.[0] && (
               <div className="">
-                <Link to={'/'} className="absolute md:hidden rounded-full bg-white px-1 py-1 top-30 left-10">
+                <Link to={'/'} className="absolute md:hidden rounded-full bg-white px-1 py-1 top-32 left-10">
                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="size-5">
                   <path strokeLinecap="round" strokeLinejoin="round" d="M15.75 19.5 8.25 12l7.5-7.5" />
                 </svg>
