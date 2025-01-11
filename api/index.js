@@ -11,8 +11,6 @@ const download = require('image-downloader');
 const multer = require('multer');
 const fs = require('fs');
 
-export const maxDuration = 300;
-
 require('dotenv').config();
 const app = express();
 
