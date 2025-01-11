@@ -215,11 +215,12 @@ app.get('/places', async (req, res) => {
 
 app.post('/bookings', async (req, res) => {
   const { token } = req.cookies;
+
   const { place, checkIn, checkOut, numberOfGuests, name, phone, price } =
     req.body;
 
   if (token) {
-    jwt.verify(token, jwtSecret, {}, async () => {
+    jwt.verify(token, jwtSecret, {}, async (err, userData) => {
       const userData = await getUserDataFromReq(req);
       Booking.create({
         place,
@@ -244,7 +245,7 @@ app.get('/bookings', async (req, res) => {
   const { token } = req.cookies;
 
   if (token) {
-    jwt.verify(token, jwtSecret, {}, async () => {
+    jwt.verify(token, jwtSecret, {}, async (err, userData) => {
       const userData = await getUserDataFromReq(req);
       res.json(
         await Booking.find({
