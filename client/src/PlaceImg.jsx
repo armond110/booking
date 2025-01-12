@@ -8,7 +8,7 @@ export default function PlaceImg({place, index=0, className=null}) {
   return (
     <>
     {place.photos.length > 0 && (
-      <img className=" w-full h-60  md:size-52 md:h-44 md:w-72 shrink-0 rounded-xl  items-center justify-center mx-auto" src={axios.defaults.baseURL + '/uploads/'+place.photos[index]} alt="" />
+      <img className=" w-full h-60  md:size-52 md:h-full md:w-72 shrink-0 rounded-xl  items-center justify-center mx-auto" src={axios.defaults.baseURL + '/uploads/'+place.photos[index]} alt="" />
     )}
     </>
   )

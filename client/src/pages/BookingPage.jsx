@@ -1,8 +1,8 @@
-import { useParams } from "react-router"
+import { Link, useParams } from "react-router"
 import { useState, useEffect } from "react";
 import axios from "axios";
 import AccountNav from "../AccountNav";
-import PlaceGallery from "../PlaceGallery";
+import PlaceBookingsImg from "../PlaceImgBookingsImg";
 import {differenceInCalendarDays, format} from 'date-fns'
 
 
@@ -26,37 +26,57 @@ export default function BookingPage() {
   if(!booking) {
     return '';
   }
+
   
   return(
-    <div>
-      <AccountNav />
-      <div className="my-8 px-4 lg:">
-      <h1 className="text-3xl text-center">{booking.place.title}</h1>
-      <h1 className="my-2 block text-center">{booking.place.address}</h1>
-
-      <div className="grid md:grid-cols-2 justify-center mx-auto items-center px-4 ">
-      
-        <div className="justify-center mx-auto items-center md:mr-4">
-        <PlaceGallery place={booking.place} />
-        </div>
-        <div className=" p-6 my-6 rounded-2xl  items-center justify-between md:px-16 ">
-        <div>
-          <h2 className="text-lg md:text-xl text-center">Your booking information:</h2>
-          <h1 booking={booking}></h1>
-        </div>
-        <div className="p-2 rounded-xl">
-          <div className="text-center  md:block md:text-lg">Total price: ${booking.price}</div>
-          <div className="text-center  md:block md:text-lg">Number of nights: {differenceInCalendarDays(new Date(booking.checkOut), new Date(booking.checkIn))}</div>
-          <div className="text-center mt-4 text-sm md:block">
-          From {format(new Date(booking.checkIn), 'dd-MM-yyyy')}      
+    <div className="px-4 md:px-4 md:w-11/12 lg:w-10/12 xl:w-9/12 2xl:2-8/12 items-center mx-auto  lg:px-8 mt-8 md:mt-0  mb-48 md:mb-96">
+          <AccountNav />
+          <div className="px-4 mt-24">
+            <h1 className="text-center text-xl text-bold uppercase mb-6 md:hidden">My bookings</h1>
+            
+            
+              <div  className="md:flex md:bg-gray-50 rounded-2xl items-center mx-auto justify-center overflow-hidden mt-2">
+                <div className="w-full md:w-64 h-42 md:h-52 " >
+                  <PlaceBookingsImg   place={booking.place} className=''/>
+                </div>
+                <div className="py-3 md:pr-3 grow md:ml-12  md:mt-0"> 
+                  <h2 className="text-xl">{booking.title}</h2>
+                <div className="text-xl">
+                  <div className="md:flex md:gap-1 mb-2 md:mt-4  md:text-gray-500 ">
+                  
+                    <div className=" text-sm text-center md:text-xl">Number of nights: {differenceInCalendarDays(new Date(booking.checkOut), new Date(booking.checkIn))}</div>
+                    <div className="hidden md:block ">
+                      <div className="flex gap-1 items-center ml-2">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="size-8">
+                      <path strokeLinecap="round" strokeLinejoin="round" d="M6.75 2.994v2.25m10.5-2.25v2.25m-14.252 13.5V7.491a2.25 2.25 0 0 1 2.25-2.25h13.5a2.25 2.25 0 0 1 2.25 2.25v11.251m-18 0a2.25 2.25 0 0 0 2.25 2.25h13.5a2.25 2.25 0 0 0 2.25-2.25m-18 0v-7.5a2.25 2.25 0 0 1 2.25-2.25h13.5a2.25 2.25 0 0 1 2.25 2.25v7.5m-6.75-6h2.25m-9 2.25h4.5m.002-2.25h.005v.006H12v-.006Zm-.001 4.5h.006v.006h-.006v-.005Zm-2.25.001h.005v.006H9.75v-.006Zm-2.25 0h.005v.005h-.006v-.005Zm6.75-2.247h.005v.005h-.005v-.005Zm0 2.247h.006v.006h-.006v-.006Zm2.25-2.248h.006V15H16.5v-.005Z" />
+                    </svg>
+                    from {format(new Date(booking.checkIn), 'dd-MM-yyyy')} 
+                    </div>
+                    </div>
+                    <div className="hidden md:block">
+                    &rarr;
+                    </div>
+                     <div className="hidden md:block">
+                     <div className="flex gap-1 items-center ">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="size-8">
+                      <path strokeLinecap="round" strokeLinejoin="round" d="M6.75 2.994v2.25m10.5-2.25v2.25m-14.252 13.5V7.491a2.25 2.25 0 0 1 2.25-2.25h13.5a2.25 2.25 0 0 1 2.25 2.25v11.251m-18 0a2.25 2.25 0 0 0 2.25 2.25h13.5a2.25 2.25 0 0 0 2.25-2.25m-18 0v-7.5a2.25 2.25 0 0 1 2.25-2.25h13.5a2.25 2.25 0 0 1 2.25 2.25v7.5m-6.75-6h2.25m-9 2.25h4.5m.002-2.25h.005v.006H12v-.006Zm-.001 4.5h.006v.006h-.006v-.005Zm-2.25.001h.005v.006H9.75v-.006Zm-2.25 0h.005v.005h-.006v-.005Zm6.75-2.247h.005v.005h-.005v-.005Zm0 2.247h.006v.006h-.006v-.006Zm2.25-2.248h.006V15H16.5v-.005Z" />
+                    </svg>
+                    {format(new Date(booking.checkOut), 'dd-MM-yyyy')}
+                    </div>
+                     </div>
+                    
+                  </div>
+                  <div className="flex  justify-center md:block">
+                  
+                  <span className="text-sm md:text-lg md:text-gray-500">
+                    Total price: ${booking.price}
+                  </span>
+                  </div>
+                </div>
+              </div>
+              </div>
+            
           </div>
-          <div className="text-center text-sm  md:block">
-          to {format(new Date(booking.checkOut), 'dd-MM-yyyy')}
-          </div>
         </div>
-      </div>
-      </div>
-    </div>
-    </div>
   )
 }

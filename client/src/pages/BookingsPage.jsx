@@ -15,10 +15,10 @@ export default function BookingsPage() {
     })
   }, []);
   return (
-    <div className="px-4 md:px-4 md:w-11/12 lg:w-10/12 xl:w-9/12 2xl:2-8/12 items-center mx-auto  lg:px-8 mt-8 md:mt-0">
+    <div className="px-4 md:px-4 md:w-11/12 lg:w-10/12 xl:w-9/12 2xl:2-8/12 items-center mx-auto  lg:px-8 mt-8 md:mt-0 mb-24">
       <AccountNav />
       <div className="px-4 ">
-        <h1 className="text-center text-xl text-bold uppercase mb-6 md:hidden">My bookings</h1>
+        <h1 className="md:hidden   bg-white  border-black text-black   text-xl gap-2 mb-8  py-2 uppercase text-center">My bookings</h1>
         
         {bookings?.length > 0 && bookings.map(booking => ( 
           <Link to={`/account/bookings/${booking._id}`} className="md:flex bg-gray-50 rounded-2xl items-center mx-auto justify-center overflow-hidden mt-2">
