@@ -21,7 +21,7 @@ const jwtSecret = process.env.JWT_SECRET;
 app.use(
   cors({
     credentials: true,
-    origin: 'https://booking-green-nine.vercel.app',
+    origin: true,
   })
 );
 app.options('*', cors());
