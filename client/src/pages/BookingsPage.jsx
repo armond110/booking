@@ -15,7 +15,7 @@ export default function BookingsPage() {
     })
   }, []);
   return (
-    <div className="px-4 md:px-4 md:w-11/12 lg:w-10/12 xl:w-9/12 2xl:2-8/12 items-center mx-auto  lg:px-8 mt-8 md:mt-0 mb-24">
+    <div className=" md:px-4 md:w-11/12 lg:w-10/12 xl:w-9/12 2xl:2-8/12 items-center mx-auto  lg:px-8 mt-8 md:mt-0 mb-24">
       <AccountNav />
       <div className="px-4 ">
         <h1 className="md:hidden   bg-white  border-black text-black   text-xl gap-2 mb-8  py-2 uppercase text-center">My bookings</h1>
@@ -25,7 +25,7 @@ export default function BookingsPage() {
             <div className="w-full md:w-64 h-42 md:h-52 ">
               <PlaceBookingsImg place={booking.place} className=''/>
             </div>
-            <div className="py-3 pr-3 grow ml-12  md:mt-0"> 
+            <div className="py-1 md:py-3 md:pr-3 grow md:ml-12  md:mt-0"> 
               <h2 className="text-xl">{booking.title}</h2>
             <div className="text-xl">
               <div className="md:flex gap-1 mb-2 md:mt-4  md:text-gray-500 ">

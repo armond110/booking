@@ -29,7 +29,7 @@ export default function BookingPage() {
 
   
   return(
-    <div className="px-4 md:px-4 md:w-11/12 lg:w-10/12 xl:w-9/12 2xl:2-8/12 items-center mx-auto  lg:px-8 mt-8 md:mt-0  mb-48 md:mb-96">
+    <div className=" md:px-4 md:w-11/12 lg:w-10/12 xl:w-9/12 2xl:2-8/12 items-center mx-auto  lg:px-8 mt-8 md:mt-0  mb-48 md:mb-96">
           <AccountNav />
           <div className="px-4 mt-24">
             <h1 className="text-center text-xl text-bold uppercase mb-6 md:hidden">My bookings</h1>

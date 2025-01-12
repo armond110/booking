@@ -49,7 +49,7 @@ export default function CountryPage(){
     
   return (
     <>
-    <div className="mt-4 md:mt-8 bg-gray-50 -my-8 px-8   text-center">
+    <div className="mt-4 md:mt-8 bg-gray-50 -my-8 px-4   text-center">
           <h1 className="text-3xl">{place.title}</h1>
             <a className="gap-1 my-3 block flex font-semibold underline px-4 md:px-40" target="_blank" href={'https://maps.google.com/?q='+place.address}>
               <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="size-6">
@@ -63,7 +63,7 @@ export default function CountryPage(){
               <div className="">
                 {place.photos?.[0] && (
                   <div className="">
-                <Link to={'/'} className="absolute md:hidden rounded-full bg-white px-1 py-1  top-28 left-10">
+                <Link to={'/'} className="absolute md:hidden rounded-full bg-white px-1 py-1  top-28 left-7">
                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="size-5">
                   <path strokeLinecap="round" strokeLinejoin="round" d="M15.75 19.5 8.25 12l7.5-7.5" />
                 </svg>

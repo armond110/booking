@@ -24,7 +24,7 @@ export default function PlacesPage() {
         </Link>
         
       </div>
-      <div className="md:mt-4 px-8 md:py-5 ">
+      <div className="md:mt-4 px-4 md:py-5 ">
         {places.length > 0 && places.map((place, index) => (
           <Link key={index} to={'/account/places/' +place._id} className="md:flex cursor-pointer gap-4  p-4 rounded-2xl mt-2 md:bg-gray-50">
             <div className="md:flex">
