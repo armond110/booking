@@ -27,7 +27,7 @@ export default function PlacePage() {
             <h2 className="text-3xl text-center">Photos of {place.title}</h2>
           </div>
           <div>
-            <button onClick={() => setShowAllPhotos(false)} className="fixed right-8 bottom-8 flex gap-1 py-2 px-4 rounded-2xl  shadow shadow-black bg-white text-black">
+            <button onClick={() => setShowAllPhotos(false)} className="fixed right-11 bottom-8 flex gap-1 py-2 px-4 rounded-2xl  shadow shadow-black bg-white text-black">
               <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="size-6">
                 <path strokeLinecap="round" strokeLinejoin="round" d="M6 18 18 6M6 6l12 12" />
               </svg>
@@ -36,7 +36,7 @@ export default function PlacePage() {
           </div>
         
         {place?.photos?.length > 0 && place.photos.map((photo, number) => (
-          <div className="items-center mx-auto justify-center  size-1/4 " key={number}>
+          <div className="items-center mx-auto justify-center size-11/12  md:size-8/12 lg:size-1/4 " key={number}>
             <img src={axios.defaults.baseURL + '/uploads/'+photo} alt="" />
           </div>
         ))}
