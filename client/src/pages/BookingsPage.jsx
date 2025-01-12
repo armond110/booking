@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import {differenceInCalendarDays, format} from 'date-fns'
 import AccountNav from "../AccountNav";
 import axios from "axios";
-import PlaceImg from "../PlaceImg";
+import PlaceBookingsImg from "../PlaceImgBookingsImg";
 import { Link } from "react-router";
 
 
@@ -15,16 +15,17 @@ export default function BookingsPage() {
     })
   }, []);
   return (
-    <div className="px-2 md:px-4  lg:px-32 mt-8 md:mt-0">
+    <div className="px-4 md:px-4 md:w-11/12 lg:w-10/12 xl:w-9/12 2xl:2-8/12 items-center mx-auto  lg:px-8 mt-8 md:mt-0">
       <AccountNav />
-      <div className="px-4">
+      <div className="px-4 ">
+        <h1 className="text-center text-xl text-bold uppercase mb-6 md:hidden">My bookings</h1>
         
         {bookings?.length > 0 && bookings.map(booking => ( 
-          <Link to={`/account/bookings/${booking._id}`} className="md:flex  gap-4 bg-gray-50 rounded-2xl overflow-hidden mt-2">
-            <div className="size-34 md:w-64 h-42 md:h-52 ">
-              <PlaceImg place={booking.place} className=''/>
+          <Link to={`/account/bookings/${booking._id}`} className="md:flex bg-gray-50 rounded-2xl items-center mx-auto justify-center overflow-hidden mt-2">
+            <div className="w-full md:w-64 h-42 md:h-52 ">
+              <PlaceBookingsImg place={booking.place} className=''/>
             </div>
-            <div className="py-3 pr-3 grow   md:mt-0"> 
+            <div className="py-3 pr-3 grow ml-12  md:mt-0"> 
               <h2 className="text-xl">{booking.title}</h2>
             <div className="text-xl">
               <div className="md:flex gap-1 mb-2 md:mt-4  md:text-gray-500 ">

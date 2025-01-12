@@ -2,6 +2,7 @@ import axios from "axios";
 import {useState, useEffect } from "react";
 import { Link, useParams } from "react-router"
 import BookingWidget from "../BookingWidget";
+import PlaceImg from "../PlaceImg";
 
 
 export default function PlacePage() {
@@ -70,7 +71,7 @@ export default function PlacePage() {
                 </svg>
                 </Link>
                 
-                <img onClick={() => setShowAllPhotos(true)} className="md:aspect-square object-cover cursor-pointer  rounded-2xl md:rounded-none  " src={axios.defaults.baseURL + '/uploads/'+place.photos[0]} alt=""/>
+                <img onClick={() => setShowAllPhotos(true)} className="w-full  h-full  shrink-0  items-center justify-center mx-auto md:aspect-square md:object-cover cursor-pointer  rounded-2xl md:rounded-none  " src={axios.defaults.baseURL + '/uploads/'+place.photos[0]} alt=""/>
                 
               </div>
               

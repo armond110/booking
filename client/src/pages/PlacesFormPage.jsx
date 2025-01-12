@@ -3,7 +3,7 @@ import Perks from "../Perks";
 import PhotosUploader from "../PhotosUploader";
 import AccountNav from "../AccountNav";
 import axios from 'axios'
-import { Navigate, useParams } from "react-router";
+import { Link, Navigate, useParams } from "react-router";
 
 export default function PlacesFormPage() {
   const {id} = useParams();
@@ -83,6 +83,11 @@ export default function PlacesFormPage() {
     <div className="px-2 text-center">
       <AccountNav />
           <form onSubmit={savePlace}>
+          <Link to={'/'} className="absolute md:hidden rounded-full bg-white border px-1 py-1  top-4 left-6">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="size-5">
+              <path strokeLinecap="round" strokeLinejoin="round" d="M15.75 19.5 8.25 12l7.5-7.5" />
+            </svg>
+          </Link>
             {preInput('Title', 'The title for your place should be short anc catchy as in advertisement')}
             <input type='text' value={title} onChange={ev => setTitle(ev.target.value)} placeholder='title, for example: My lovely apartment'/>
             {preInput('Address', 'Address to you place')}

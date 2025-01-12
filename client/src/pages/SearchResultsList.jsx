@@ -18,7 +18,7 @@ export default function SearchResultsList ({ results }) {
       {results.map((result) => {
         return (
             <form className=" max-w-xl   mx-auto  md:px-none ">   
-              <div className="relative mt-1 border-b border-gray-200 h-12 md:h-8 bg-gray-50">
+              <div className="relative border-b  h-12 md:h-8 bg-white">
                 <SearchResult id={result._id} result={result.title} location={result.address}/>
               </div>   
             </form>

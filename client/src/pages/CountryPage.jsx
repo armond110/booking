@@ -63,12 +63,12 @@ export default function CountryPage(){
               <div className="">
                 {place.photos?.[0] && (
                   <div className="">
-                <Link to={'/'} className="absolute md:hidden rounded-full bg-white px-1 py-1  top-36 left-10">
+                <Link to={'/'} className="absolute md:hidden rounded-full bg-white px-1 py-1  top-28 left-10">
                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="size-5">
                   <path strokeLinecap="round" strokeLinejoin="round" d="M15.75 19.5 8.25 12l7.5-7.5" />
                 </svg>
                 </Link>
-                    <img onClick={() => setShowAllPhotos(true)} className="md:aspect-square object-cover cursor-pointer  rounded-2xl md:rounded-none  " src={axios.defaults.baseURL + '/uploads/'+place.photos[0]} alt=""/>
+                    <img onClick={() => setShowAllPhotos(true)} className="w-full  h-full  shrink-0  items-center justify-center mx-auto md:aspect-square md:object-cover cursor-pointer  rounded-2xl md:rounded-none   " src={axios.defaults.baseURL + '/uploads/'+place.photos[0]} alt=""/>
                     
                   </div>
                   
