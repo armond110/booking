@@ -36,7 +36,7 @@ export default function PlacePage() {
           </div>
         
         {place?.photos?.length > 0 && place.photos.map((photo, number) => (
-          <div className="items-center mx-auto justify-center size-100" key={number}>
+          <div className="items-center mx-auto justify-center  size-1/4 " key={number}>
             <img src={axios.defaults.baseURL + '/uploads/'+photo} alt="" />
           </div>
         ))}
