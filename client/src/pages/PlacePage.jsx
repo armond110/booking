@@ -37,7 +37,7 @@ export default function PlacePage() {
           </div>
         
         {place?.photos?.length > 0 && place.photos.map((photo, number) => (
-          <div className="items-center mx-auto justify-center size-11/12  md:size-8/12 lg:size-1/4 " key={number}>
+          <div className="items-center mx-auto justify-center size-11/12  md:size-8/12 lg:size-2/4 " key={number}>
             <img src={axios.defaults.baseURL + '/uploads/'+photo} alt="" />
           </div>
         ))}
@@ -53,7 +53,7 @@ export default function PlacePage() {
       <h1 className="text-3xl ">
         {place.title}
         </h1>
-        <a className=" my-3 block flex font-semibold underline  " target="_blank" href={'https://maps.google.com/?q='+place.address}>
+        <a className=" my-3 block flex font-semibold underline  mt-4 md:mt-0 ml-10 md:ml-0" target="_blank" href={'https://maps.google.com/?q='+place.address}>
           <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="size-6">
             <path strokeLinecap="round" strokeLinejoin="round" d="M15 10.5a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z" />
           <path strokeLinecap="round" strokeLinejoin="round" d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1 1 15 0Z" />
@@ -65,35 +65,45 @@ export default function PlacePage() {
           <div className="">
             {place.photos?.[0] && (
               <div className="">
-                <Link to={'/'} className="absolute md:hidden rounded-full bg-white px-1 py-1  top-28 left-7">
+                <Link to={'/'} className=" fixed md:hidden  top-16 left-4 px-2 rounded-lg py-1 bg-white border border-black">
                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="size-5">
                   <path strokeLinecap="round" strokeLinejoin="round" d="M15.75 19.5 8.25 12l7.5-7.5" />
                 </svg>
                 </Link>
                 
-                <img onClick={() => setShowAllPhotos(true)} className="w-full h-full size-36 md:h-96  shrink-0  items-center justify-center mx-auto md:aspect-square md:object-cover cursor-pointer  rounded-2xl md:rounded-none  " src={axios.defaults.baseURL + '/uploads/'+place.photos[0]} alt=""/>
+                <img onClick={() => setShowAllPhotos(true)} className="w-full h-full size-96 md:h-96  shrink-0  items-center justify-center mx-auto md:aspect-square md:object-cover cursor-pointer  rounded-2xl md:rounded-none  md:hover:opacity-90 " src={axios.defaults.baseURL + '/uploads/'+place.photos[0]} alt=""/>
                 
               </div>
               
             )}
             
         </div>
-        <div className="hidden md:grid md:grid-cols-2">
+        <div className="hidden md:grid md:grid-cols-2 md:h-96 gap-2">
           {place.photos?.[1] && (
-            <img onClick={() => setShowAllPhotos(true)} className="w-full h-full size-36 md:h-48 right-1 cursor-pointer " src={axios.defaults.baseURL + '/uploads/'+place.photos[1]} alt=""/>
+            <img onClick={() => setShowAllPhotos(true)} className="w-full h-full size-36 md:h-48  hover:opacity-90 cursor-pointer " src={axios.defaults.baseURL + '/uploads/'+place.photos[1]} alt=""/>
           )}
           {place.photos?.[2] && (
-              <img onClick={() => setShowAllPhotos(true)} className="w-full h-full size-36 md:h-48 ml-1  cursor-pointer " src={axios.defaults.baseURL + '/uploads/'+place.photos[2]} alt=""/>
+              <img onClick={() => setShowAllPhotos(true)} className="w-full h-full size-36 md:h-48  hover:opacity-90  cursor-pointer " src={axios.defaults.baseURL + '/uploads/'+place.photos[2]} alt=""/>
           )}
           {place.photos?.[3] && (
-            <img onClick={() => setShowAllPhotos(true)} className="w-full h-full size-36 md:h-48 ml-1 relative cursor-pointer right-1  top-1" src={axios.defaults.baseURL + '/uploads/'+place.photos[3]} alt=""/>
-          )}
-          <div>{place.photos?.[4] && (
-              <img onClick={() => setShowAllPhotos(true)} className="w-full h-full size-36 md:h-48 ml-1 relative top-1 cursor-pointer " src={axios.defaults.baseURL + '/uploads/'+place.photos[4]} alt=""/>
+            <img onClick={() => setShowAllPhotos(true)} className="w-full h-full size-36 md:h-48  hover:opacity-90 cursor-pointer " src={axios.defaults.baseURL + '/uploads/'+place.photos[3]} alt=""/>
           )}
           
+          <div>{place.photos?.[4] && (
+              <img onClick={() => setShowAllPhotos(true)} className="w-full h-full size-36 md:h-48  hover:opacity-90 cursor-pointer " src={axios.defaults.baseURL + '/uploads/'+place.photos[4]} alt=""/>
+          )}
+          <button onClick={() => setShowAllPhotos(true)} className="sticky bottom-2 flex    ml-20 px-2 rounded-lg py-1 bg-white">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="size-6 mr-1">
+            <path strokeLinecap="round" strokeLinejoin="round" d="m2.25 15.75 5.159-5.159a2.25 2.25 0 0 1 3.182 0l5.159 5.159m-1.5-1.5 1.409-1.409a2.25 2.25 0 0 1 3.182 0l2.909 2.909m-18 3.75h16.5a1.5 1.5 0 0 0 1.5-1.5V6a1.5 1.5 0 0 0-1.5-1.5H3.75A1.5 1.5 0 0 0 2.25 6v12a1.5 1.5 0 0 0 1.5 1.5Zm10.5-11.25h.008v.008h-.008V8.25Zm.375 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Z" />
+          </svg>
+
+              Show more pictures
+            </button>
+          <div>
           </div>
           
+            
+          </div>
         </div>
         
       </div>
@@ -108,21 +118,9 @@ export default function PlacePage() {
               <p className="text-sm md:text-lg">{place.description}</p>
             </div>
           <p className="text-sm md:text-lg flex"><p className="text-sm md:text-lg font-semibold ">Max number of guests :&nbsp;</p> {place.maxGuests}</p>
-          {place.extraInfo && (
-            <>
-              <div className=" -mx-8 px-8 py-8 ">
-                <div>
-                <h2 className="text-md md:text-xl font-semibold">Extra info</h2>
-                </div>
-              <div className="mb-4 mt-2 text-sm md:text-lg  leading-5 ">
-                {place.extraInfo}
-              </div>
-              </div>
-            </>
-          )}
-        
-      <h1 className="text-md md:text-xl font-semibold mb-4 mt-4">What you will find</h1>
-      <section className="mb-24">
+          
+      <h1 className="text-md md:text-xl font-semibold mb-4 mt-16">What you will find</h1>
+      <section className="mb-4">
       {place.perks?.[0] && (
           <>
           <label className=" p-4 flex  gap-2 items-center ">
@@ -178,6 +176,21 @@ export default function PlacePage() {
           </>          
         )}
       </section>
+
+          {place.extraInfo && (
+            <>
+              <div className=" -mx-8 px-8 py-8 ">
+                <div>
+                <h2 className="text-md md:text-xl font-semibold">Extra info</h2>
+                </div>
+              <div className="mb-4 mt-2 text-sm md:text-lg  leading-5 ">
+                {place.extraInfo}
+              </div>
+              </div>
+            </>
+          )}
+        
+      
         
           </div>
           
