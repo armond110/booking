@@ -21,7 +21,7 @@ const jwtSecret = process.env.JWT_SECRET;
 app.use(
   cors({
     credentials: true,
-    origin: 'https://booking-green-nine.vercel.app/',
+    origin: true,
   })
 );
 app.options('*', cors());
@@ -262,8 +262,8 @@ app.post('/logout', (req, res) => {
   res.cookie('token', '').json(true);
 });
 
-app.listen(port, () => {
-  console.log(`Example app listening on port ${port}`);
-});
+//app.listen(port, () => {
+//console.log(`Example app listening on port ${port}`);
+//});
 
-// module.exports = app;
+module.exports = app;
