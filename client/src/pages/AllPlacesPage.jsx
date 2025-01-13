@@ -4,7 +4,7 @@ import axios from "axios";
 export default function AllPlacesPage({places}) {
 
   return (
-    <div className="gap-6 gap-y-8 grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 px-4 md:px-12 lg:px-24 2xl:px-72  py-20 md:py-6 text-center justify-center"> 
+    <div className="gap-6 gap-y-8 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 4xl:grid-cols-5   px-4 md:px-12 lg:px-24 xl:px-12  py-20 md:py-6 text-center justify-center"> 
       {places.length > 0 && places.map((place, index) => (
         <Link key={index} to={'/place/'+place._id}>
             {place.photos?.[0] && (

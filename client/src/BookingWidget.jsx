@@ -47,16 +47,16 @@ export default function BookingWidget({place}) {
   
 
   return(
-    <div className="bg-white shadow p-4 rounded-2xl ">
+    <div className="bg-white shadow p-4 rounded-2xl text-center sticky md:top-8">
       
-              <div className="text-md md:text-2xl text-center">
+              <div className="text-md md:text-xl font-semibold text-center">
                 Price: ${place.price} / per night
               </div>
               
                 <div className="border rounded-2xl mt-4" >
                 <div className="flex">
                 <div className=" mx-auto">
-                <label className="text-sm md:text-lg">Check in:</label>
+                <label className="text-sm md:text-lg font-semibold">Check in:</label>
                 <input type="date" className="text-sm md:text-lg"
                 value={checkIn}
                 onChange={ev => setCheckIn(ev.target.value)}
@@ -64,7 +64,7 @@ export default function BookingWidget({place}) {
               </div>
               </div>
               <div className="py-3  border-l">
-                <label className="text-sm md:text-lg">Check out:</label>
+                <label className="text-sm md:text-lg font-semibold">Check out:</label>
                 <input type="date" className="text-sm md:text-lg" 
                 value={checkOut}
                 onChange={ev => setCheckOut(ev.target.value)}
@@ -73,7 +73,7 @@ export default function BookingWidget({place}) {
               
               
               <div className="py-3 px-4 border-t">
-                <label className="text-sm md:text-lg">Number of guests:</label>
+                <label className="text-sm md:text-lg font-semibold">Number of guests:</label>
                 <input type="number" className="text-sm md:text-lg"
                 value={numberOfGuests}
                 max={place.maxGuests}
@@ -84,13 +84,13 @@ export default function BookingWidget({place}) {
               </div>
              
               {numberOfNights > 0 && (
-                <div className="py-3 px-4 border-t">
-                <label>Your full name:</label>
+                <div className="py-3 px-4  border-t">
+                <label className="text-sm md:text-lg font-semibold">Your full name:</label>
                 <input type="text" 
                 value={name}
                 onChange={ev => setName(ev.target.value)}
                 />
-                <label>Phone number:</label>
+                <label className="text-sm md:text-lg font-semibold">Phone number:</label>
                 <input type="tel" 
                 value={phone}
                 onChange={ev => setPhone(ev.target.value)}
