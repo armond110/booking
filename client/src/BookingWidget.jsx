@@ -108,7 +108,7 @@ export default function BookingWidget({place}) {
                 )}
                 {!user && (
                 <>
-                <button className="primary  border-t disabled:cursor-not-allowed" disabled >
+                <button className="primary  border-t cursor-not-allowed" disabled >
                 Book this place
                 {numberOfNights > 0 && (
                   <span> ${numberOfGuests * numberOfNights * place.price}</span>
