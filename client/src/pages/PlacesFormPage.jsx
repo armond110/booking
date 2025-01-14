@@ -80,7 +80,7 @@ export default function PlacesFormPage() {
   }
 
   return (
-    <div className="px-2 text-center">
+    <div className="px-2 text-center md:px-20">
       <AccountNav />
           <form onSubmit={savePlace}>
           <Link to={'/'} className="absolute md:hidden rounded-full bg-white border px-1 py-1  top-4 left-6">
