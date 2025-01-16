@@ -10,6 +10,14 @@ export default function PlacePage() {
   const [place, setPlace] = useState(null);
   const [showAllPhotos, setShowAllPhotos] = useState(false);
   
+  /*
+    <button onClick={() => setShowAllPhotos(true)} className="sticky bottom-2 flex  md:ml-2 px-2 rounded-lg py-1 bg-white">
+      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="size-6 mr-1">
+        <path strokeLinecap="round" strokeLinejoin="round" d="m2.25 15.75 5.159-5.159a2.25 2.25 0 0 1 3.182 0l5.159 5.159m-1.5-1.5 1.409-1.409a2.25 2.25 0 0 1 3.182 0l2.909 2.909m-18 3.75h16.5a1.5 1.5 0 0 0 1.5-1.5V6a1.5 1.5 0 0 0-1.5-1.5H3.75A1.5 1.5 0 0 0 2.25 6v12a1.5 1.5 0 0 0 1.5 1.5Zm10.5-11.25h.008v.008h-.008V8.25Zm.375 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Z" />
+      /svg>
+        Show more pictures
+    </button> 
+  */
   
   useEffect(() => {
     if(!id) {
@@ -37,7 +45,7 @@ export default function PlacePage() {
           </div>
         
         {place?.photos?.length > 0 && place.photos.map((photo, number) => (
-          <div className="items-center mx-auto justify-center size-11/12  md:size-8/12 lg:size-2/4 " key={number}>
+          <div className=" items-center mx-auto justify-center size-11/12  md:size-8/12 lg:size-2/4 " key={number}>
             <img src={axios.defaults.baseURL + '/uploads/'+photo} alt="" />
           </div>
         ))}
@@ -49,27 +57,31 @@ export default function PlacePage() {
 
   
   return (
-    <div className=" mt-4 md:mt-8 md:px-10 lg:px-20 2xl:px-48  -my-8 px-4  ">
+    <div className=" mt-4 md:mt-8 md:px-10 lg:px-20 items-center mx-auto justify-center  max-w-screen-2xl -my-8 px-2  ">
       <h1 className="text-3xl ">
         {place.title}
         </h1>
-        <a className=" my-3 block flex font-semibold underline  mt-4 md:mt-0 ml-10 md:ml-0" target="_blank" href={'https://maps.google.com/?q='+place.address}>
+        <div className="flex md:mb-4 md:mt-3">
+        <Link to={'/'} className=" md:hidden px-2 rounded-lg py-1 mb-1 bg-white border border-black">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="size-6">
+            <path strokeLinecap="round" strokeLinejoin="round" d="M15.75 19.5 8.25 12l7.5-7.5" />
+          </svg>
+        </Link>
+        <a className=" mt-1 md:mt-0 block flex font-semibold underline     md:ml-0" target="_blank" href={'https://maps.google.com/?q='+place.address}>
           <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="size-6">
             <path strokeLinecap="round" strokeLinejoin="round" d="M15 10.5a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z" />
           <path strokeLinecap="round" strokeLinejoin="round" d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1 1 15 0Z" />
         </svg>
         {place.address}
         </a>
+        </div>
+        
         <div className="">
         <div className="md:grid md:gap-2 md:grid-cols-2 md:rounded-xl md:overflow-hidden ">
           <div className="">
             {place.photos?.[0] && (
               <div className="">
-                <Link to={'/'} className=" fixed md:hidden  top-16 left-4 px-2 rounded-lg py-1 bg-white border border-black">
-                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="size-5">
-                  <path strokeLinecap="round" strokeLinejoin="round" d="M15.75 19.5 8.25 12l7.5-7.5" />
-                </svg>
-                </Link>
+                
                 
                 <img onClick={() => setShowAllPhotos(true)} className="w-full h-full size-96 md:h-96  shrink-0  items-center justify-center mx-auto md:aspect-square md:object-cover cursor-pointer  rounded-2xl md:rounded-none  md:hover:opacity-90 " src={axios.defaults.baseURL + '/uploads/'+place.photos[0]} alt=""/>
                 
@@ -88,22 +100,9 @@ export default function PlacePage() {
           {place.photos?.[3] && (
             <img onClick={() => setShowAllPhotos(true)} className="w-full h-full size-36 md:h-48  hover:opacity-90 cursor-pointer " src={axios.defaults.baseURL + '/uploads/'+place.photos[3]} alt=""/>
           )}
-          
-          <div>{place.photos?.[4] && (
+          {place.photos?.[4] && (
               <img onClick={() => setShowAllPhotos(true)} className="w-full h-full size-36 md:h-48  hover:opacity-90 cursor-pointer " src={axios.defaults.baseURL + '/uploads/'+place.photos[4]} alt=""/>
           )}
-          <button onClick={() => setShowAllPhotos(true)} className="sticky bottom-2 flex    ml-20 px-2 rounded-lg py-1 bg-white">
-          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="size-6 mr-1">
-            <path strokeLinecap="round" strokeLinejoin="round" d="m2.25 15.75 5.159-5.159a2.25 2.25 0 0 1 3.182 0l5.159 5.159m-1.5-1.5 1.409-1.409a2.25 2.25 0 0 1 3.182 0l2.909 2.909m-18 3.75h16.5a1.5 1.5 0 0 0 1.5-1.5V6a1.5 1.5 0 0 0-1.5-1.5H3.75A1.5 1.5 0 0 0 2.25 6v12a1.5 1.5 0 0 0 1.5 1.5Zm10.5-11.25h.008v.008h-.008V8.25Zm.375 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Z" />
-          </svg>
-
-              Show more pictures
-            </button>
-          <div>
-          </div>
-          
-            
-          </div>
         </div>
         
       </div>
@@ -111,13 +110,13 @@ export default function PlacePage() {
       <div>
       
       </div>
-        <div className="mt-8 mb-8 grid gap-8 grid-cols-1 md:grid-cols-[2fr_1fr] ">
+        <div className="md:mt-8 mb-8 grid gap-8 grid-cols-1 md:grid-cols-[2fr_1fr] px-2 md:px-0">
           <div>
             <div className="my-4">
               <p className="text-md md:text-xl font-semibold">About this place</p>
               <p className="text-sm md:text-lg">{place.description}</p>
             </div>
-          <p className="text-sm md:text-lg flex"><p className="text-sm md:text-lg font-semibold ">Max number of guests :&nbsp;</p> {place.maxGuests}</p>
+          <div className="text-sm md:text-lg flex"><p className="text-sm md:text-lg font-semibold ">Max number of guests :&nbsp;</p> {place.maxGuests}</div>
           
       <h1 className="text-md md:text-xl font-semibold mb-4 mt-16">What you will find</h1>
       <section className="mb-4">

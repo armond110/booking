@@ -13,7 +13,7 @@ import PlacePage from './pages/PlacePage'
 import BookingsPage from './pages/BookingsPage'
 import BookingPage from './pages/BookingPage'
 import CountryPage from './pages/CountryPage'
-import Favourites from './pages/Favourites'
+
 
 axios.defaults.baseURL = 'http://localhost:3000';
 axios.defaults.withCredentials = true;
@@ -28,7 +28,6 @@ function App() {
         <Route path="/register" element={<RegisterPage />} />
         <Route path="/account/" element={<ProfilePage />}/>
         <Route path="/account/places" element={<PlacesPage />}/>
-        <Route path="/account/favourites" element={<Favourites />}/>
         <Route path="/account/places/new" element={<PlacesFormPage />}/>
         <Route path="/account/places/:id" element={<PlacesFormPage />}/>
         <Route path="/place/:id" element={<PlacePage />}/> 

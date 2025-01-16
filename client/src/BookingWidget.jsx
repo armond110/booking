@@ -1,5 +1,5 @@
 import { useState, useContext, useEffect } from "react"
-import {differenceInCalendarDays} from "date-fns"
+import {addDays, differenceInCalendarDays, format} from "date-fns"
 import axios from "axios";
 import { Link, Navigate } from "react-router";
 import {UserContext} from './UserContext';
@@ -13,6 +13,10 @@ export default function BookingWidget({place}) {
   const [phone, setPhone] = useState('');
   const [redirect, setRedirect] = useState('');
   const {user} = useContext(UserContext);
+
+  
+  
+  
 
   useEffect(() => {
     if(user) {
@@ -28,10 +32,12 @@ export default function BookingWidget({place}) {
   if(redirect) {
     return <Navigate to={redirect} />
   }
+  
 
   async function bookThisPlace() {
+    
    
-    if (!checkIn || !checkOut || !numberOfGuests || place.maxGuests < numberOfGuests || numberOfGuests <= 0 ||  !name || !phone) {
+    if (!checkIn || !checkOut || !numberOfGuests || place.maxGuests < numberOfGuests || numberOfGuests <= 0 || phone.length != 10 ||  !name || !phone) {
       toast.error('Please fill out all required fields');
       return;
     } 
@@ -44,10 +50,10 @@ export default function BookingWidget({place}) {
     setRedirect(`/account/bookings/${bookingId}`);
     
   }
-  
 
+  
   return(
-    <div className="bg-white shadow p-4 rounded-2xl text-center sticky md:top-8">
+    <div className="bg-white shadow p-4 rounded-2xl text-center md:sticky md:top-8">
       
               <div className="text-md md:text-xl font-semibold text-center">
                 Price: ${place.price} / per night
@@ -56,22 +62,25 @@ export default function BookingWidget({place}) {
                 <div className="border rounded-2xl mt-4" >
                 <div className="flex">
                 <div className=" mx-auto">
-                <label className="text-sm md:text-lg font-semibold">Check in:</label>
+
+                <label className="text-sm md:text-lg font-semibold">Check in:&nbsp;</label>
                 <input type="date" className="text-sm md:text-lg"
                 value={checkIn}
+                
+                min={new Date().toISOString().split("T")[0]}
                 onChange={ev => setCheckIn(ev.target.value)}
                 />
               </div>
               </div>
-              <div className="py-3  border-l">
-                <label className="text-sm md:text-lg font-semibold">Check out:</label>
-                <input type="date" className="text-sm md:text-lg" 
+              <label className="text-sm md:text-lg font-semibold">Check out:&nbsp;</label>
+              <input type="date" className="text-sm md:text-lg"
                 value={checkOut}
+                
+                min={addDays(new Date(), 1).toISOString().split("T")[0]}
                 onChange={ev => setCheckOut(ev.target.value)}
+               
                 />
-              </div>
-              
-              
+
               <div className="py-3 px-4 border-t">
                 <label className="text-sm md:text-lg font-semibold">Number of guests:</label>
                 <input type="number" className="text-sm md:text-lg"
@@ -91,6 +100,7 @@ export default function BookingWidget({place}) {
                 onChange={ev => setName(ev.target.value)}
                 />
                 <label className="text-sm md:text-lg font-semibold">Phone number:</label>
+                
                 <input type="tel" 
                 value={phone}
                 onChange={ev => setPhone(ev.target.value)}

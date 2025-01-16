@@ -5,11 +5,13 @@ import Pagination from "./Pagination";
 import SearchBar from "./SearchBar";
 import SearchResultsList from "./SearchResultsList";
 
+
 export default function IndexPage() {
   const [placesPage, setPlacesPage] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
   const [placesPerPage] = useState(20);
   const [results, setResults] = useState([]);
+
 
   useEffect(() => {
     axios.get('/places').then(response => {
@@ -43,7 +45,7 @@ export default function IndexPage() {
         </div>
  
     </div> 
-    <div className="px-8"></div>
+    
     
     <AllPlacesPage places={currentPages}/>
     <ul className="inline-flex -space-x-px text-base h-10 mb-8">

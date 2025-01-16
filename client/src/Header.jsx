@@ -1,23 +1,15 @@
 import { useContext, useState } from "react"
 import { Link } from "react-router"
 import { UserContext } from "./UserContext"
-import SearchBar from "./pages/SearchBar";
-import SearchResultsList from "./pages/SearchResultsList";
 import Dropdown from "./Dropdown";
 
 export default function Header() {
 
-    const [results, setResults] = useState([]);
     const {user} = useContext(UserContext);
-    let [open, setOpen] = useState(false);
-
-    /* 
-    
-    */
 
   return (
     <>
-    <div className="shadow-md w-full fixed md:sticky bottom-0  md:px-10 lg:px-20 ">
+    <div className="shadow-md border-b 2xl:shadow-none w-full fixed md:sticky bottom-0  md:px-10 lg:px-20">
       <div className="flex items-center justify-between bg-white py-4 ">
         <Link to={'/'}
           className="font-serif text-2xl hidden md:block cursor-pointer md:flex items-center font-bold text-gray-800">

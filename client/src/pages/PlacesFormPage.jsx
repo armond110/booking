@@ -4,6 +4,7 @@ import PhotosUploader from "../PhotosUploader";
 import AccountNav from "../AccountNav";
 import axios from 'axios'
 import { Link, Navigate, useParams } from "react-router";
+import {addDays, format, differenceInCalendarDays} from "date-fns"
 
 export default function PlacesFormPage() {
   const {id} = useParams();
@@ -59,7 +60,7 @@ export default function PlacesFormPage() {
   async function savePlace(ev) {
     ev.preventDefault();
     const placeData = {
-      title, address, photos: addedPhotos, 
+        title, address, photos: addedPhotos, 
         description, perks, extraInfo, 
         checkIn,checkOut,maxGuests,price
     }
@@ -102,19 +103,12 @@ export default function PlacesFormPage() {
               </div>
               {preInput('Extra Info', 'House rules, etc')}
               <textarea value={extraInfo} onChange={ev => setExtraInfo(ev.target.value)}/>
-              {preInput('Check in&out times', 'Add check in and out time, remember to have some time for cleaning the room between guests')}
-              <div className="grid gap-2 sm:grid-cols-2 md:grid-cols-4">
-                  <div>
-                    <h3 className="mt-2 -mb-1">Check in time</h3>
-                    <input type="text" value={checkIn} onChange={ev => setCheckIn(ev.target.value)} placeholder="14"/>
-                  </div>
-                  <div>
-                  <h3 className="mt-2 -mb-1">Check out time</h3>
-                    <input type="text" value={checkOut} onChange={ev => setCheckOut(ev.target.value)} placeholder="11"/>
-                  </div>
-                  <div>
-                  <h3 className="mt-2 -mb-1">Max number guests</h3>
-                    <input type="number" value={maxGuests} onChange={ev => setMaxGuests(ev.target.value)} />
+              
+              <div className="grid gap-2 md:grid-cols-1 ">
+                  
+                  <div className="">
+                  <h3 className="mt-2 -mb-1 text-center">Max number guests</h3>
+                    <input type="number" min={1} max={16} value={maxGuests} onChange={ev => setMaxGuests(ev.target.value)} />
                     </div>
                 </div>
                 <div>
