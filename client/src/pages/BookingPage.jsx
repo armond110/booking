@@ -29,9 +29,9 @@ export default function BookingPage() {
 
   
   return(
-    <div className=" md:px-96    items-center mx-auto   mt-8 md:mt-0  mb-48 md:mb-96">
+    <div className="w-full  items-center mx-auto justify-center  mt-8 md:mt-0  mb-48 md:mb-96">
           <AccountNav />
-          <div className="px-4 md:mt-12">
+          <div className=" md:mt-12">
           <div className="flex md:mb-4 md:mt-3">
         <Link to={'/'} className=" md:hidden px-2 rounded-lg py-1 mb-1 bg-white border border-black">
           <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="size-6">
